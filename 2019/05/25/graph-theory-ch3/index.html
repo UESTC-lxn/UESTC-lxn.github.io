@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="第三章 图的连通度 3.1 概念  割边：设\(e\)是图\(G\)的一条边，若\(\omega (G-e)&amp;gt;\omega (G)\)，则称\(e\)为\(G\)的割边。（\(\omega\)为连通分支数）  边\(e\)是图\(G\)的割边当且仅当\(e\)不在\(G\)的任何圈中 \(e\)为连通图\(G\)的一条边，如果\(e\)含于\(G\)的某圈中，则\(G-e\)连通">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三章 图的连通度">
+<meta property="og:url" content="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch3/index.html">
+<meta property="og:site_name" content="刘笑男">
+<meta property="og:description" content="第三章 图的连通度 3.1 概念  割边：设\(e\)是图\(G\)的一条边，若\(\omega (G-e)&amp;gt;\omega (G)\)，则称\(e\)为\(G\)的割边。（\(\omega\)为连通分支数）  边\(e\)是图\(G\)的割边当且仅当\(e\)不在\(G\)的任何圈中 \(e\)为连通图\(G\)的一条边，如果\(e\)含于\(G\)的某圈中，则\(G-e\)连通">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-25T12:21:01.227Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三章 图的连通度">
+<meta name="twitter:description" content="第三章 图的连通度 3.1 概念  割边：设\(e\)是图\(G\)的一条边，若\(\omega (G-e)&amp;gt;\omega (G)\)，则称\(e\)为\(G\)的割边。（\(\omega\)为连通分支数）  边\(e\)是图\(G\)的割边当且仅当\(e\)不在\(G\)的任何圈中 \(e\)为连通图\(G\)的一条边，如果\(e\)含于\(G\)的某圈中，则\(G-e\)连通">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>第三章 图的连通度 | 刘笑男</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘笑男</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Ashen one, hearest thou my voice, still?</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="UESTC-lxn">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘笑男">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第三章 图的连通度
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-25 13:00:00 / 修改时间：20:21:01" itemprop="dateCreated datePublished" datetime="2019-05-25T13:00:00+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/" itemprop="url" rel="index"><span itemprop="name">图论</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/25/graph-theory-ch3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/graph-theory-ch3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/25/graph-theory-ch3/" class="leancloud_visitors" data-flag-title="第三章 图的连通度">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第三章-图的连通度">第三章 图的连通度</h1>
+<h2 id="概念">3.1 概念</h2>
+<ul>
+<li>割边：设<span class="math inline">\(e\)</span>是图<span class="math inline">\(G\)</span>的一条边，若<span class="math inline">\(\omega (G-e)&gt;\omega (G)\)</span>，则称<span class="math inline">\(e\)</span>为<span class="math inline">\(G\)</span>的<strong>割边</strong>。（<span class="math inline">\(\omega\)</span>为连通分支数）
+<ul>
+<li>边<span class="math inline">\(e\)</span>是图<span class="math inline">\(G\)</span>的割边当且仅当<span class="math inline">\(e\)</span>不在<span class="math inline">\(G\)</span>的任何圈中</li>
+<li><span class="math inline">\(e\)</span>为连通图<span class="math inline">\(G\)</span>的一条边，如果<span class="math inline">\(e\)</span>含于<span class="math inline">\(G\)</span>的某圈中，则<span class="math inline">\(G-e\)</span>连通</li>
+</ul></li>
+<li>割点：如果<span class="math inline">\(E(G)\)</span>可以划分为两个非空子集<span class="math inline">\(E_1\)</span>与<span class="math inline">\(E_2\)</span>，使<span class="math inline">\(G[E_1]\)</span>和<span class="math inline">\(G(E_2)\)</span>以点<span class="math inline">\(v\)</span>为公共顶点，称<span class="math inline">\(v\)</span>为<span class="math inline">\(G\)</span>的一个<strong>割点</strong>
+<ul>
+<li><span class="math inline">\(G\)</span>无环且非平凡，则<span class="math inline">\(v\)</span>是<span class="math inline">\(G\)</span>的割点，当且仅当<span class="math inline">\(\omega (G-v)&gt;\omega (G)\)</span></li>
+<li>设<span class="math inline">\(v\)</span>是树<span class="math inline">\(T\)</span>的顶点，则<span class="math inline">\(v\)</span>是割点，当且仅当<span class="math inline">\(v\)</span>是树的分支点</li>
+<li>设<span class="math inline">\(v\)</span>是无环连通图<span class="math inline">\(G\)</span>的一个顶点，则<span class="math inline">\(v\)</span>是<span class="math inline">\(G\)</span>的割点，当且仅当<span class="math inline">\(V(G-v)\)</span>可以划分为两个非空子集<span class="math inline">\(V_1\)</span>与<span class="math inline">\(V_2\)</span>,使得对任意<span class="math inline">\(x\in V_1\)</span>, <span class="math inline">\(y\in V_2\)</span>, 点<span class="math inline">\(v\)</span>在每一条<span class="math inline">\((x,y)\)</span>路上</li>
+</ul></li>
+<li>块：没有割点的连通图称为<strong>块</strong>
+<ul>
+<li>若<span class="math inline">\(|V(G)|\geq 3\)</span>,则<span class="math inline">\(G\)</span>是块，当且仅当<span class="math inline">\(G\)</span>无环且任意两顶点位于同一圈上（证明P48）</li>
+<li>点<span class="math inline">\(v\)</span>是图<span class="math inline">\(G\)</span>的割点当且仅当<span class="math inline">\(v\)</span>至少属于<span class="math inline">\(G\)</span>的两个不同的块（证明P49）</li>
+</ul></li>
+<li>顶点割（点割）：给定连通图<span class="math inline">\(G\)</span>，设<span class="math inline">\(V&#39;\subseteq V(G)\)</span>，若<span class="math inline">\(G-V&#39;\)</span>不连通，称<span class="math inline">\(V&#39;\)</span>为<span class="math inline">\(G\)</span>的一个点割集，含有<span class="math inline">\(k\)</span>个顶点的点割集称为<span class="math inline">\(k\)</span><strong>顶点割</strong>。<span class="math inline">\(G\)</span>中点数最少的顶点割称为<strong>最小顶点割</strong>。</li>
+<li>点连通度<span class="math inline">\(\kappa\)</span>：在<span class="math inline">\(G\)</span>中，若存在顶点割，称<span class="math inline">\(G\)</span>的最小顶点割的顶点数称为<span class="math inline">\(G\)</span>的点连通度；否则称<span class="math inline">\(n-1\)</span>为其点连通度。<span class="math inline">\(G\)</span>的点连通度记为<span class="math inline">\(\kappa (G)\)</span>, 简记为<span class="math inline">\(\kappa\)</span>。若<span class="math inline">\(G\)</span>不连通，<span class="math inline">\(\kappa (G)=0\)</span></li>
+<li>边连通度<span class="math inline">\(\lambda\)</span>：在<span class="math inline">\(G\)</span>中，最小边割集所含边数称为<span class="math inline">\(G\)</span>的边连通度。边连通度记为<span class="math inline">\(\lambda (G)\)</span> 。若<span class="math inline">\(G\)</span>不连通或<span class="math inline">\(G\)</span>是平凡图，则定义<span class="math inline">\(\lambda (G) =0\)</span></li>
+<li>在<span class="math inline">\(G\)</span>中，若<span class="math inline">\(\kappa (G)≧k\)</span>, 称<span class="math inline">\(G\)</span>是<span class="math inline">\(k\)</span><strong>连通</strong>的；若<span class="math inline">\(\lambda (G)≧k\)</span>，称<span class="math inline">\(G\)</span>是<span class="math inline">\(k\)</span><strong>边连通</strong>的</li>
+<li><strong>（惠特尼）定理</strong>：对任意图<span class="math inline">\(G\)</span>，有<span class="math inline">\(\kappa (G)\leq \lambda (G)\leq \delta (G)\)</span></li>
+<li>设<span class="math inline">\(G\)</span>是<span class="math inline">\((n,m)\)</span>连通图，则<span class="math inline">\(\displaystyle \kappa (G)\leq \lfloor \frac{2m}{n}\rfloor\)</span></li>
+<li>敏格尔定理:
+<ul>
+<li>设<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>是图<span class="math inline">\(G\)</span>中的两个不相邻点，则<span class="math inline">\(G\)</span>中分离点<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>的最小点数等于独立的<span class="math inline">\((x, y)\)</span>路的最大数目</li>
+<li>设<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>是图<span class="math inline">\(G\)</span>中的两个不相邻点，则<span class="math inline">\(G\)</span>中分离点<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>的最小边数等于<span class="math inline">\(G\)</span>中边不重的<span class="math inline">\((x, y)\)</span>路的最大数目</li>
+</ul></li>
+</ul>
+<hr>
+<p>证明题：</p>
+<ol type="1">
+<li>求证：无环非平凡连通图至少有两个非割点
+<ul>
+<li>证明： 由于<span class="math inline">\(G\)</span>是无环非平凡连通图，所以存在非平凡生成树，而非平凡生成树至少两片树叶，它不能为割点，所以，它也不能为<span class="math inline">\(G\)</span>的割点</li>
+</ul></li>
+<li>求证：恰有两个非割点的连通单图是一条路
+<ul>
+<li>证明：设<span class="math inline">\(T\)</span>是<span class="math inline">\(G\)</span>的一棵生成树。由于<span class="math inline">\(G\)</span>有<span class="math inline">\(n-2\)</span>个割点，所以，<span class="math inline">\(T\)</span>有<span class="math inline">\(n-2\)</span>个割点，即<span class="math inline">\(T\)</span>只有两片树叶，所以<span class="math inline">\(T\)</span>是一条路。这说明，<span class="math inline">\(G\)</span>的任意生成树为路。一个单图的任意生成树为路，则该图为圈或路，若为圈，则<span class="math inline">\(G\)</span>没有割点，矛盾，所以，<span class="math inline">\(G\)</span>为路</li>
+</ul></li>
+<li>求证：若<span class="math inline">\(v\)</span>是单图<span class="math inline">\(G\)</span>的割点，则它不是<span class="math inline">\(G\)</span>的补图的割点
+<ul>
+<li><span class="math inline">\(v\)</span>是单图<span class="math inline">\(G\)</span>的割点，则<span class="math inline">\(G-v\)</span>至少两个连通分支。现任取<span class="math inline">\(x,y\in V(\bar{G} -v)\)</span>，如果<span class="math inline">\(x, y\)</span>在<span class="math inline">\(G-v\)</span>的同一分支中，令<span class="math inline">\(u\)</span>是与<span class="math inline">\(x, y\)</span>处于不同分支的点，那么通过<span class="math inline">\(u\)</span>，可说明，<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>在<span class="math inline">\(G-v\)</span>的补图中连通。若<span class="math inline">\(x, y\)</span>在<span class="math inline">\(G-v\)</span>的不同分支中，则它们在<span class="math inline">\(G-v\)</span>的补图中邻接。所以，若<span class="math inline">\(v\)</span>是<span class="math inline">\(G\)</span>的割点，则v不是其补图的割点</li>
+</ul></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="UESTC-lxn 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>UESTC-lxn</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch3/" title="第三章 图的连通度">https://uestc-lxn.github.io/2019/05/25/graph-theory-ch3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/graph-theory-ch2/" rel="next" title="第二章 树">
+                <i class="fa fa-chevron-left"></i> 第二章 树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/25/graph-theory-ch4/" rel="prev" title="第四章 Euler图与Hamilton图">
+                第四章 Euler图与Hamilton图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="UESTC-lxn">
+            
+              <p class="site-author-name" itemprop="name">UESTC-lxn</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/UESTC-lxn" title="GitHub &rarr; https://github.com/UESTC-lxn" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:357566121@qq.com" title="E-Mail &rarr; mailto:357566121@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-图的连通度"><span class="nav-text">第三章 图的连通度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-text">3.1 概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">UESTC-lxn</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'DRSzWQc7fpM1NIqFURUUDPSq-gzGzoHsz',
+    appKey: 'WSieJIe2H7SWK0US5yMIFN1G',
+    placeholder: '不说点啥嘛 >.<',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'nNzQCTlmp1051yfARUJGF23Q-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'nNzQCTlmp1051yfARUJGF23Q-gzGzoHsz',
+                'X-LC-Key': 'HJuz7awgDvXVl1yjQTy1Ujra',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600,"hOffset":-50,"vOffset":-50},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="刘笑男">
 <meta property="og:description" content="第五章 匹配与因子分解 5.1 概念  匹配：如果\(M\)是图\(G\)的边子集(不含环），且\(M\)中的任意两条边没有共同顶点，则称\(M\)是\(G\)的一个匹配或对集或边独立集 饱和点：如果\(G\)中顶点\(v\)是\(G\)的匹配\(M\)中某条边的端点，称它为\(M\)饱和点，否则为\(M\)非饱和点 最大匹配：如果\(M\)是图\(G\)的包含边数最多的匹配，称\(M\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-25T12:23:18.122Z">
+<meta property="og:updated_time" content="2019-05-29T12:48:45.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五章 匹配与因子分解">
 <meta name="twitter:description" content="第五章 匹配与因子分解 5.1 概念  匹配：如果\(M\)是图\(G\)的边子集(不含环），且\(M\)中的任意两条边没有共同顶点，则称\(M\)是\(G\)的一个匹配或对集或边独立集 饱和点：如果\(G\)中顶点\(v\)是\(G\)的匹配\(M\)中某条边的端点，称它为\(M\)饱和点，否则为\(M\)非饱和点 最大匹配：如果\(M\)是图\(G\)的包含边数最多的匹配，称\(M\">
@@ -398,12 +398,24 @@
                 
               
 
-              <time title="创建时间：2019-05-25 15:00:00 / 修改时间：20:23:18" itemprop="dateCreated datePublished" datetime="2019-05-25T15:00:00+08:00">2019-05-25</time>
+              <time title="创建时间：2019-05-25 15:00:00" itemprop="dateCreated datePublished" datetime="2019-05-25T15:00:00+08:00">2019-05-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-29 20:48:45" itemprop="dateModified" datetime="2019-05-29T20:48:45+08:00">2019-05-29</time>
               
             
           </span>
@@ -499,6 +511,7 @@
 <li>若<span class="math inline">\(G\)</span>是<span class="math inline">\(k(k&gt;0)\)</span>正则偶图，则<span class="math inline">\(G\)</span>存在完美匹配</li>
 <li>每个<span class="math inline">\(k\)</span>方体都是<span class="math inline">\(k\)</span>正则偶图</li>
 <li>每个<span class="math inline">\(k\)</span>方体都有完美匹配(<span class="math inline">\(k\geq 2\)</span>)</li>
+<li>没有割边的3正则图存在完美匹配。（有割边的3正则图不一定存在完美匹配）</li>
 <li><span class="math inline">\(K_{2n}\)</span>的不同完美匹配个数为：<span class="math inline">\((2n-1)!!\)</span></li>
 <li><span class="math inline">\(K_{n,n}\)</span>的不同完美匹配个数为：<span class="math inline">\(n!\)</span></li>
 </ul>
@@ -513,8 +526,8 @@
 <ol type="1">
 <li><span class="math inline">\(K_{2n}\)</span>可一因子分解</li>
 <li>每个<span class="math inline">\(k(k&gt;0)\)</span>正则偶图G是一可因子分解的</li>
-<li>具有<span class="math inline">\(H\)</span>圈的三正则图可一因子分解</li>
-<li>若三正则图有割边，则它不能一因子分解</li>
+<li>具有<span class="math inline">\(H\)</span>圈的3正则图可一因子分解。（可一因子分解的3正则图不一定存在<span class="math inline">\(H\)</span>圈）</li>
+<li>若3正则图有割边，则它不能一因子分解。（没有割边的3正则图可能也没有一因子分解，如彼得森图）</li>
 <li><span class="math inline">\(K_{2n+1}\)</span>可2因子分解</li>
 <li><span class="math inline">\(K_{2n}\)</span>可分解为一个1因子和n-1个2因子之和</li>
 <li>每个没有割边的3正则图是一个1因子和1个2因子之和</li>

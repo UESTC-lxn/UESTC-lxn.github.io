@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图G">
+  <meta name="description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第四章 Euler图与Hamilton图">
 <meta property="og:url" content="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/index.html">
 <meta property="og:site_name" content="刘笑男">
-<meta property="og:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图G">
+<meta property="og:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-25T12:20:34.015Z">
+<meta property="og:updated_time" content="2019-05-29T09:14:13.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四章 Euler图与Hamilton图">
-<meta name="twitter:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图G">
+<meta name="twitter:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
 
 
 
@@ -398,12 +398,24 @@
                 
               
 
-              <time title="创建时间：2019-05-25 14:00:00 / 修改时间：20:20:34" itemprop="dateCreated datePublished" datetime="2019-05-25T14:00:00+08:00">2019-05-25</time>
+              <time title="创建时间：2019-05-25 14:00:00" itemprop="dateCreated datePublished" datetime="2019-05-25T14:00:00+08:00">2019-05-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-29 17:14:13" itemprop="dateModified" datetime="2019-05-29T17:14:13+08:00">2019-05-29</time>
               
             
           </span>
@@ -487,14 +499,14 @@
 </ul>
 <p>性质：</p>
 <ul>
-<li>下列陈述对于非平凡连通图G是等价的：
+<li>下列陈述对于非平凡连通图<span class="math inline">\(G\)</span>是等价的：
 <ul>
-<li>G是欧拉图；</li>
-<li>G的顶点度数为偶数；</li>
-<li>G的边集合能划分为圈</li>
+<li><span class="math inline">\(G\)</span>是欧拉图；</li>
+<li><span class="math inline">\(G\)</span>的顶点度数为偶数；</li>
+<li><span class="math inline">\(G\)</span>的边集合能划分为圈</li>
 </ul></li>
-<li>连通图G是欧拉图当且仅当G的顶点度数为偶数</li>
-<li>连通非欧拉图G存在欧拉迹当且仅当G中只有两个顶点度数为奇数</li>
+<li>连通图<span class="math inline">\(G\)</span>是欧拉图当且仅当<span class="math inline">\(G\)</span>的顶点度数为偶数</li>
+<li>连通非欧拉图G存在欧拉迹当且仅当<span class="math inline">\(G\)</span>中只有两个顶点度数为奇数</li>
 <li>Fleury(弗勒里)算法：尽量避割边行走</li>
 </ul>
 <h2 id="hamilton图">4.2 Hamilton图</h2>
@@ -516,7 +528,7 @@
 </ul></li>
 <li>图<span class="math inline">\(G\)</span>的闭包是唯一的。</li>
 </ul></li>
-<li>度序列判定法：设<span class="math inline">\(G\)</span>是读序列为<span class="math inline">\((d_1,d_2,...,d_n)\)</span>的简单图，这里<span class="math inline">\(d_1\leq d_2\leq ...\leq d_n\)</span>，并且<span class="math inline">\(n\geq 3\)</span>。若对任何<span class="math inline">\(\displaystyle m&lt;\frac{n}{2}\)</span>，或有<span class="math inline">\(d_m&gt;m\)</span>，或有<span class="math inline">\(d_{n-m}\geq n-m\)</span>，则<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图</li>
+<li>度序列判定法：设<span class="math inline">\(G\)</span>是度序列为<span class="math inline">\((d_1,d_2,...,d_n)\)</span>的简单图，这里<span class="math inline">\(d_1\leq d_2\leq ...\leq d_n\)</span>，并且<span class="math inline">\(n\geq 3\)</span>。若对任何<span class="math inline">\(\displaystyle m&lt;\frac{n}{2}\)</span>，或有<span class="math inline">\(d_m&gt;m\)</span>，或有<span class="math inline">\(d_{n-m}\geq n-m\)</span>，则<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图</li>
 </ul>
 <h2 id="度极大非hamilton图">4.3 度极大非Hamilton图</h2>
 <ul>

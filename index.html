@@ -261,7 +261,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
         
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
 
   </li>
         
@@ -299,7 +299,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
 
@@ -556,6 +556,269 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/11/01/pca/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="UESTC-lxn">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘笑男">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/11/01/pca/" class="post-title-link" itemprop="url">主成分分析（PCA）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-01 10:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T10:00:00+08:00">2019-11-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-04 20:07:30" itemprop="dateModified" datetime="2019-11-04T20:07:30+08:00">2019-11-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/11/01/pca/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/01/pca/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/11/01/pca/" class="leancloud_visitors" data-flag-title="主成分分析（PCA）">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- # 主成分分析（PCA） -->
+<p><strong>主成分分析</strong>（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。</p>
+<p>首先从一张图来直观感受下：</p>
+<figure>
+<embed src="/public/images/PCA/PCA.webp"><figcaption>PCA</figcaption>
+</figure>
+<p>图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条直线上的投影就是降维后的数据。那么选择这条直线的标准是什么呢？标准就是样本点在直线上的投影要尽可能地分散，对应到数学形式上就是方差最大。下面进行数学推导。</p>
+<h2 id="数学推导">数学推导</h2>
+<p>样本<span class="math inline">\(X=[x_1, x_2,...,x_n]\)</span>，其中<span class="math inline">\(x_i \in R^p\)</span>，即每个样本是<span class="math inline">\(p\)</span>维的。现在我们进行降维操作，通过一个矩阵变换来实现： <span class="math display">\[y_i=Wx_i \qquad其中y_i\in R^q\]</span> 其中 <span class="math display">\[W=\left[\begin{matrix}
+        \omega ^T_1 \\
+        \vdots \\
+        \omega ^T_q
+    \end{matrix}\right] \in R^{q \times q}\]</span> 这样一来，相当于把<span class="math inline">\(x_i\)</span>的<span class="math inline">\(p\)</span>维数据降到<span class="math inline">\(y_i\)</span>的<span class="math inline">\(q\)</span>维（<span class="math inline">\(q&lt;p\)</span>），整个问题也变成了如何得到<span class="math inline">\(W\)</span>。</p>
+<p>如果将式子展开得到如下形式： <span class="math display">\[\begin{aligned}
+    Y &amp;= WX\\
+    &amp;= \left[
+        \begin{matrix}
+        \omega ^T_1 \\
+        \omega ^T_2 \\
+        \vdots \\
+        \omega ^T_q
+    \end{matrix}
+    \right] \times  
+    \begin{matrix}
+        [x_1 &amp; x_2 &amp; \cdots &amp; x_n]
+    \end{matrix} \\
+    &amp;= \left[\begin{matrix}
+            \omega ^T_1 x_1 &amp; \omega ^T_1 x_2 &amp; \cdots &amp; \omega ^T_1 x_n \\
+            \omega ^T_2 x_1 &amp; \omega ^T_2 x_2 &amp; \cdots &amp; \omega ^T_2 x_n \\
+            \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+            \omega ^T_q x_1 &amp; \omega ^T_q x_2 &amp; \cdots &amp; \omega ^T_q x_n
+        \end{matrix}\right] \\
+    &amp;=  \begin{matrix}
+        [y_1 &amp; y_2 &amp; \cdots &amp; y_n]
+        \end{matrix}
+\end{aligned}\]</span> 现在假设其中一个<span class="math inline">\(\omega _i\)</span>为<span class="math inline">\(\omega\)</span>，其中一个样本点<span class="math inline">\(x_i\)</span>为<span class="math inline">\(x\)</span>，注意<span class="math inline">\(\omega\)</span>和<span class="math inline">\(x\)</span>都是<span class="math inline">\(p\)</span>维的，那么: <span class="math display">\[ \omega ^T x = \omega \cdot x = |\omega||x|cos\theta \]</span> 其中可以对<span class="math inline">\(\omega\)</span>进行缩放，我们将约束其模为1，即<span class="math inline">\(|\omega|=1(\omega ^T \omega=1)\)</span>，于是： <span class="math display">\[ \omega ^T x = |x|cos\theta \]</span> 即问题转化为样本点<span class="math inline">\(x\)</span>在<span class="math inline">\(\omega\)</span>上的投影，现在要使得这些投影点的方差最大。下面介绍一些概念，然后进行推导。</p>
+<p>样本均值： <span class="math display">\[ \bar{x}=\frac{1}{n}\sum ^n_i x_i\]</span> 样本投影均值： <span class="math display">\[ \mu=\frac{1}{n}\sum ^n_i \omega ^Tx_i\]</span> 样本<span class="math inline">\(X\)</span>与样本<span class="math inline">\(Y\)</span>的协方差： <span class="math display">\[ \begin{aligned}
+    Cov(X,Y) &amp;= E[(X-E(X))(Y-E(Y))] \\
+    &amp;= \frac{1}{n}\sum ^n_i (x_i - \bar{x})(y_i - \bar{y})
+\end{aligned}\]</span> 样本点在<span class="math inline">\(\omega\)</span>上投影的方差： <span class="math display">\[ \begin{aligned}
+    \sigma ^2 &amp;= \frac{1}{n}\sum ^n_i (\omega^T x_i - \mu)^2\\
+    &amp;= \frac{1}{n}\sum ^n_i (\omega^T x_i - \frac{1}{n}\sum ^n_i \omega ^Tx_i)^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T x_i  - \omega^T(\frac{1}{n}\sum ^n_i x_i))^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T x_i  - \omega^T\bar{x})^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T(x_i  - \bar{x}))^2 \qquad这里\omega^T( x_i  - \bar{x})是一个数\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T(x_i  - \bar{x}))(\omega^T( x_i  - \bar{x}))^T\\
+    &amp;= \frac{1}{n}\sum ^n_i\omega^T(x_i  - \bar{x})(x_i  - \bar{x})^T\omega\\
+    &amp;= \omega^T(\frac{1}{n}\sum ^n_i (x_i  - \bar{x})(x_i  - \bar{x})^T)\omega\\
+    &amp;= \omega^T\Sigma\omega
+\end{aligned}\]</span> 其中<span class="math inline">\(\Sigma\)</span>是样本<span class="math inline">\(X\)</span>与自身的协方差矩阵。这样一来问题就变成以下优化问题： <span class="math display">\[ max\quad \omega^T\Sigma\omega \\
+s.t.\quad \omega^T\omega=1 \]</span> 用拉格朗日乘数法求解： <span class="math display">\[ L(\omega,\lambda)=\omega^T\Sigma\omega-\lambda(\omega^T\omega-1)\\
+\frac{\partial L(\omega,\lambda)}{\partial \omega}=2\Sigma\omega-2\lambda\omega=0\\
+\Sigma\omega=\lambda\omega \]</span> 即<span class="math inline">\(\lambda\)</span>是<span class="math inline">\(\Sigma\)</span>的特征值，<span class="math inline">\(\omega\)</span>是特征值为<span class="math inline">\(\lambda\)</span>的特征向量。由此可以推出： <span class="math display">\[ \sigma^2=\lambda\omega^T\omega=\lambda \]</span> 即<strong>投影后的方差就是协方差矩阵的特征值</strong>，使投影后的方差最大就是协方差矩阵的特征值最大。求解协方差矩阵<span class="math inline">\(\Sigma\)</span>的特征值和特征向量时可以用到<strong>谱分解</strong>（又称特征分解）： <span class="math display">\[ \Sigma=Q\Lambda Q^T \]</span> 其中<span class="math inline">\(Q\)</span>为正交矩阵，<span class="math inline">\(\Lambda\)</span>为对角矩阵，对角线上的元素为矩阵<span class="math inline">\(\Sigma\)</span>的特征值。<span class="math inline">\(Q\)</span>的列向量<span class="math inline">\(q_i\)</span>为<span class="math inline">\(\Lambda\)</span>中对角元素<span class="math inline">\(\lambda_{ii}\)</span>对应的特征向量。</p>
+<h2 id="pca算法步骤如下">PCA算法步骤如下</h2>
+<p>输入数据集<span class="math inline">\(X=[x_1, x_2,...,x_n]其中x_i\in R^n\)</span>，需要降到<span class="math inline">\(k\)</span>维，</p>
+<ol type="1">
+<li>去平均值(又称去中心化)，即<span class="math inline">\(x_i-\bar{x}\)</span>，得到<span class="math inline">\(\bar{X}=[x_1-\bar{x},x_2-\bar{x},...,x_n-\bar{x}]\)</span></li>
+<li>求解协方差矩阵<span class="math inline">\(\displaystyle \Sigma=\frac{1}{n}\bar{X}\bar{X}^T\)</span>的特征值及对应的特征向量</li>
+<li>选取前<span class="math inline">\(k\)</span>大的特征值<span class="math inline">\((\lambda_1,\lambda_2,...,\lambda_k)\)</span>及对应的特征向量<span class="math inline">\((\omega_1,\omega_2,...,\omega_k)\)</span></li>
+<li>降维后的数据 <span class="math display">\[Y=WX,W=\left[\begin{matrix}
+     \omega ^T_1 \\
+     \vdots \\
+     \omega ^T_k
+ \end{matrix}\right]\]</span></li>
+</ol>
+<h2 id="代码如下">代码如下</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官网 https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html</span></span><br><span class="line"><span class="comment"># 输入数据为(n_samples, n_features)</span></span><br><span class="line">X = np.array([[<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">-2</span>, <span class="number">-1</span>], [<span class="number">-3</span>, <span class="number">-2</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">1</span>], [<span class="number">3</span>, <span class="number">2</span>]])</span><br><span class="line">pca = PCA(n_components=<span class="number">1</span>)</span><br><span class="line">pca.fit(X)</span><br><span class="line"></span><br><span class="line">print(pca.explained_variance_ratio_) <span class="comment"># 所保留的特征的方差百分比</span></span><br><span class="line">print(pca.fit_transform(X)) <span class="comment"># 返回降维后的数据(n_samples, n_components)</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -618,7 +881,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-26 16:21:43" itemprop="dateModified" datetime="2019-05-26T16:21:43+08:00">2019-05-26</time>
+                <time title="修改时间：2019-11-01 11:24:53" itemprop="dateModified" datetime="2019-11-01T11:24:53+08:00">2019-11-01</time>
               
             
           </span>
@@ -696,7 +959,7 @@
       
         
           
-            <h1 id="第七章-图的着色">第七章 图的着色</h1>
+            <!-- # 第七章 图的着色 -->
 <h2 id="概念">7.1 概念</h2>
 <ul>
 <li>边着色：对<span class="math inline">\(G\)</span>的边进行染色，若相邻边染不同颜色，则称对<span class="math inline">\(G\)</span>进行<strong>正常边着色</strong>，如果能用<span class="math inline">\(k\)</span>种颜色对图<span class="math inline">\(G\)</span>进行正常边着色，称<span class="math inline">\(G\)</span>是<span class="math inline">\(k\)</span>边可着色的。</li>
@@ -850,7 +1113,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-28 19:53:50" itemprop="dateModified" datetime="2019-05-28T19:53:50+08:00">2019-05-28</time>
+                <time title="修改时间：2019-10-27 14:23:49" itemprop="dateModified" datetime="2019-10-27T14:23:49+08:00">2019-10-27</time>
               
             
           </span>
@@ -1080,7 +1343,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-29 20:48:45" itemprop="dateModified" datetime="2019-05-29T20:48:45+08:00">2019-05-29</time>
+                <time title="修改时间：2019-10-27 14:38:36" itemprop="dateModified" datetime="2019-10-27T14:38:36+08:00">2019-10-27</time>
               
             
           </span>
@@ -1208,19 +1471,17 @@
 <li>步骤3 若<span class="math inline">\(y\)</span>是<span class="math inline">\(M\)</span>饱和的。设<span class="math inline">\(yz\in M\)</span>，<span class="math inline">\(S=S\cup \{z\}\)</span>，<span class="math inline">\(T=T\cup \{y\}\)</span>，然后转到步骤2；若<span class="math inline">\(y\)</span>是<span class="math inline">\(M\)</span>非饱和的，则<span class="math inline">\(P=(u，y)\)</span>路是<span class="math inline">\(M\)</span>可扩的，<span class="math inline">\(M=M\bigtriangleup E(P)\)</span>，然后转到步骤1</li>
 </ul>
 <h2 id="最优匹配算法边赋权完全偶图找完美匹配">5.4 最优匹配算法（边赋权完全偶图找完美匹配）</h2>
-<p><em>注意理解匈牙利算法与库恩算法的相似与不同</em></p>
+<p><em>注意理解匈牙利算法与库恩算法的相似与不同！</em></p>
 <ul>
-<li><p>可行顶点标号：设<span class="math inline">\(G=(X,Y)\)</span>，若对任意的<span class="math inline">\(x\in X,y\in Y\)</span>，有<span class="math inline">\(l(x)+l(y)\geq w(xy)\)</span>，则称<span class="math inline">\(l\)</span>是赋权完全偶图<span class="math inline">\(G\)</span>的可行顶点标号。</p>
+<li>可行顶点标号：设<span class="math inline">\(G=(X,Y)\)</span>，若对任意的<span class="math inline">\(x\in X,y\in Y\)</span>，有<span class="math inline">\(l(x)+l(y)\geq w(xy)\)</span>，则称<span class="math inline">\(l\)</span>是赋权完全偶图<span class="math inline">\(G\)</span>的可行顶点标号。
 <ul>
-<li><p>事实上，设： <span class="math display">\[\begin{cases} 
+<li>事实上，设： <span class="math display">\[\begin{cases}
   l(x)=\underset{y\in Y}{max} \ w(xy),若x\in X,\\
   l(y)=0,若y\in Y.
-\end{cases}\]</span></p>
-<p>则<span class="math inline">\(l\)</span>是<span class="math inline">\(G\)</span>的一个可行顶点标号。</p></li>
+\end{cases}\]</span> 则<span class="math inline">\(l\)</span>是<span class="math inline">\(G\)</span>的一个可行顶点标号。</li>
 </ul></li>
-<li><p>相等子图：设<span class="math inline">\(l\)</span>是赋权完全偶图<span class="math inline">\(G=(X, Y)\)</span>的可行顶点标号，令<span class="math inline">\(E_l=\{ xy\in E(G)|l(x)+l(y)=w(xy)\}\)</span>，则称<span class="math inline">\(G_l=G[E_l]\)</span>为<span class="math inline">\(G\)</span>的对应于<span class="math inline">\(l\)</span>的相等子图。</p></li>
-<li><p><strong>库恩算法</strong>（Kuhn-Munkres）:</p>
-<p>给一初始顶点标号<span class="math inline">\(l\)</span>,在<span class="math inline">\(G_l\)</span>中任选一个匹配<span class="math inline">\(M\)</span>，</p>
+<li>相等子图：设<span class="math inline">\(l\)</span>是赋权完全偶图<span class="math inline">\(G=(X, Y)\)</span>的可行顶点标号，令<span class="math inline">\(E_l=\{ xy\in E(G)|l(x)+l(y)=w(xy)\}\)</span>，则称<span class="math inline">\(G_l=G[E_l]\)</span>为<span class="math inline">\(G\)</span>的对应于<span class="math inline">\(l\)</span>的相等子图。</li>
+<li><strong>库恩算法</strong>（Kuhn-Munkres）: 给一初始顶点标号<span class="math inline">\(l\)</span>,在<span class="math inline">\(G_l\)</span>中任选一个匹配<span class="math inline">\(M\)</span>，
 <ul>
 <li>步骤1 若<span class="math inline">\(X\)</span>是<span class="math inline">\(M\)</span>饱和的，则<span class="math inline">\(M\)</span>是最优匹配。否则，令<span class="math inline">\(u\)</span>是一个<span class="math inline">\(M\)</span>非饱和点，置<span class="math inline">\(S=\{ u\},T=\varnothing\)</span></li>
 <li>步骤2 若<span class="math inline">\(T\subset N_{G_l}\)</span>，转到步骤3。否则，计算： <span class="math display">\[\alpha _l=\underset{x\in S,y\notin T}{min}\{ l(x)+l(y)-w(xy)\}\]</span> <span class="math display">\[\hat{l}=\begin{cases}
@@ -1349,7 +1610,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-29 17:14:13" itemprop="dateModified" datetime="2019-05-29T17:14:13+08:00">2019-05-29</time>
+                <time title="修改时间：2019-10-27 14:38:36" itemprop="dateModified" datetime="2019-10-27T14:38:36+08:00">2019-10-27</time>
               
             
           </span>
@@ -1471,8 +1732,7 @@
 <li>图<span class="math inline">\(G\)</span>称为<strong>度极大非</strong><span class="math inline">\(H\)</span><strong>图</strong>，如果它的度不弱于其它非<span class="math inline">\(H\)</span>图</li>
 <li><span class="math inline">\(C_{m,n}\)</span>图：对于<span class="math inline">\(\displaystyle 1\leq m&lt;\frac{n}{2}\)</span>，<span class="math inline">\(C_{m,n}\)</span>图定义为<span class="math inline">\(C_{m,n}=K_m\vee （\bar{K}_m+K_{n-2m}）\)</span>
 <ul>
-<li>注意理解<span class="math inline">\(C_{m,n}\)</span>的度序列为： <span class="math display">\[(\underbrace{m,...,m,}_{m}\ \underbrace{n-m-1,...,n-m-1,}_{n-2m}\ \underbrace{n-1,...,n-1}_{m})\]</span><br>
-</li>
+<li>注意理解<span class="math inline">\(C_{m,n}\)</span>的度序列为： <span class="math display">\[(\underbrace{m,...,m,}_{m}\ \underbrace{n-m-1,...,n-m-1,}_{n-2m}\ \underbrace{n-1,...,n-1}_{m})\]</span></li>
 </ul></li>
 <li>对于<span class="math inline">\(\displaystyle 1\leq m&lt;\frac{n}{2}\)</span>，<span class="math inline">\(C_{m,n}\)</span>图是非<span class="math inline">\(H\)</span>图</li>
 </ul>
@@ -1608,7 +1868,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-29 17:14:13" itemprop="dateModified" datetime="2019-05-29T17:14:13+08:00">2019-05-29</time>
+                <time title="修改时间：2019-10-27 14:42:14" itemprop="dateModified" datetime="2019-10-27T14:42:14+08:00">2019-10-27</time>
               
             
           </span>
@@ -1845,12 +2105,24 @@
                 
               
 
-              <time title="创建时间：2019-05-25 12:00:00 / 修改时间：20:24:52" itemprop="dateCreated datePublished" datetime="2019-05-25T12:00:00+08:00">2019-05-25</time>
+              <time title="创建时间：2019-05-25 12:00:00" itemprop="dateCreated datePublished" datetime="2019-05-25T12:00:00+08:00">2019-05-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-27 14:42:14" itemprop="dateModified" datetime="2019-10-27T14:42:14+08:00">2019-10-27</time>
               
             
           </span>
@@ -2084,7 +2356,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-29 17:14:13" itemprop="dateModified" datetime="2019-05-29T17:14:13+08:00">2019-05-29</time>
+                <time title="修改时间：2019-10-27 14:42:14" itemprop="dateModified" datetime="2019-10-27T14:42:14+08:00">2019-10-27</time>
               
             
           </span>
@@ -2262,7 +2534,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2281,7 +2553,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2300,7 +2574,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2622,6 +2898,8 @@
     
       
         
+      
+    
       
     
       

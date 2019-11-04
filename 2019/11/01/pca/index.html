@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
-<meta name="keywords" content="图论">
+  <meta name="description" content="主成分分析（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。 首先从一张图来直观感受下：  PCA  图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第四章 Euler图与Hamilton图">
-<meta property="og:url" content="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/index.html">
+<meta property="og:title" content="主成分分析（PCA）">
+<meta property="og:url" content="https://uestc-lxn.github.io/2019/11/01/pca/index.html">
 <meta property="og:site_name" content="刘笑男">
-<meta property="og:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
+<meta property="og:description" content="主成分分析（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。 首先从一张图来直观感受下：  PCA  图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T06:38:36.984Z">
+<meta property="og:updated_time" content="2019-11-04T12:07:30.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第四章 Euler图与Hamilton图">
-<meta name="twitter:description" content="第四章 Euler图与Hamilton图 4.1 Euler图  Euler迹：经过连通图\(G\)的每条边的迹称为Euler迹。（注意区分迹与闭迹） Euler图：对于连通图\(G\)，如果\(G\)中存在经过每条边的闭迹，则称\(G\)为欧拉图，简称\(G\)为\(E\)图。欧拉闭迹又称为欧拉环游，或欧拉回路。（通俗理解为遍历边回到起点）  性质：  下列陈述对于非平凡连通图\">
+<meta name="twitter:title" content="主成分分析（PCA）">
+<meta name="twitter:description" content="主成分分析（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。 首先从一张图来直观感受下：  PCA  图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/">
+  <link rel="canonical" href="https://uestc-lxn.github.io/2019/11/01/pca/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>第四章 Euler图与Hamilton图 | 刘笑男</title>
+  <title>主成分分析（PCA） | 刘笑男</title>
   
 
 
@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/">
+    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/11/01/pca/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="UESTC-lxn">
@@ -372,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第四章 Euler图与Hamilton图
+          <h1 class="post-title" itemprop="name headline">主成分分析（PCA）
 
               
             
@@ -398,7 +398,7 @@
                 
               
 
-              <time title="创建时间：2019-05-25 14:00:00" itemprop="dateCreated datePublished" datetime="2019-05-25T14:00:00+08:00">2019-05-25</time>
+              <time title="创建时间：2019-11-01 10:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T10:00:00+08:00">2019-11-01</time>
             
 
             
@@ -415,7 +415,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-27 14:38:36" itemprop="dateModified" datetime="2019-10-27T14:38:36+08:00">2019-10-27</time>
+                <time title="修改时间：2019-11-04 20:07:30" itemprop="dateModified" datetime="2019-11-04T20:07:30+08:00">2019-11-04</time>
               
             
           </span>
@@ -432,7 +432,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/" itemprop="url" rel="index"><span itemprop="name">图论</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -451,8 +451,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/25/graph-theory-ch4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/graph-theory-ch4/" itemprop="commentCount"></span>
+                <a href="/2019/11/01/pca/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/01/pca/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,7 +460,7 @@
 
           
           
-            <span id="/2019/05/25/graph-theory-ch4/" class="leancloud_visitors" data-flag-title="第四章 Euler图与Hamilton图">
+            <span id="/2019/11/01/pca/" class="leancloud_visitors" data-flag-title="主成分分析（PCA）">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -491,68 +491,73 @@
       
 
       
-        <h1 id="第四章-euler图与hamilton图">第四章 Euler图与Hamilton图</h1>
-<h2 id="euler图">4.1 Euler图</h2>
-<ul>
-<li>Euler迹：经过连通图<span class="math inline">\(G\)</span>的每条边的迹称为<strong>Euler迹</strong>。（注意区分迹与闭迹）</li>
-<li>Euler图：对于连通图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>中存在经过每条边的闭迹，则称<span class="math inline">\(G\)</span>为<strong>欧拉图</strong>，简称<span class="math inline">\(G\)</span>为<span class="math inline">\(E\)</span>图。<strong>欧拉闭迹</strong>又称为<strong>欧拉环游</strong>，或<strong>欧拉回路</strong>。（通俗理解为<em>遍历边回到起点</em>）</li>
-</ul>
-<p>性质：</p>
-<ul>
-<li>下列陈述对于非平凡连通图<span class="math inline">\(G\)</span>是等价的：
-<ul>
-<li><span class="math inline">\(G\)</span>是欧拉图；</li>
-<li><span class="math inline">\(G\)</span>的顶点度数为偶数；</li>
-<li><span class="math inline">\(G\)</span>的边集合能划分为圈</li>
-</ul></li>
-<li>连通图<span class="math inline">\(G\)</span>是欧拉图当且仅当<span class="math inline">\(G\)</span>的顶点度数为偶数</li>
-<li>连通非欧拉图G存在欧拉迹当且仅当<span class="math inline">\(G\)</span>中只有两个顶点度数为奇数</li>
-<li>Fleury(弗勒里)算法：尽量避割边行走</li>
-</ul>
-<h2 id="hamilton图">4.2 Hamilton图</h2>
-<ul>
-<li>Hamilton图：如果经过图<span class="math inline">\(G\)</span>的每个顶点恰好一次后能够回到出发点，称这样的图为<strong>哈密尔顿图</strong>，简称<span class="math inline">\(H\)</span>图。所经过的闭途径是<span class="math inline">\(G\)</span>的一个生成圈，称为<span class="math inline">\(G\)</span>的<strong>哈密尔顿圈</strong>。(通俗理解为<em>遍历点回到起点</em>)</li>
-<li>Hamilton路：如果存在经过<span class="math inline">\(G\)</span>的每个顶点恰好一次的路，称该路为<span class="math inline">\(G\)</span>的<strong>哈密尔顿路</strong>，简称<span class="math inline">\(H\)</span>路</li>
-</ul>
-<p>性质与判定：</p>
-<ul>
-<li>(必要条件) 若<span class="math inline">\(G\)</span>为<span class="math inline">\(H\)</span>图，则对<span class="math inline">\(V(G)\)</span>的任一非空顶点子集<span class="math inline">\(S\)</span>，有<span class="math inline">\(\omega (G-S)\leq |S|\)</span>。（<em>即满足不等式的图不一定是<span class="math inline">\(H\)</span>图，不满足不等式的图一定是非<span class="math inline">\(H\)</span>图</em>）</li>
-<li>(充分条件) 对于<span class="math inline">\(n\geq 3\)</span>的单图<span class="math inline">\(G\)</span>，如果G中有<span class="math inline">\(\displaystyle \delta (G)\geq \frac{n}{2}\)</span>，那么<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图。</li>
-<li>(充分条件) 对于<span class="math inline">\(n\geq 3\)</span>的单图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>中的任意两个不相邻顶点<span class="math inline">\(u\)</span>与<span class="math inline">\(v\)</span>，有<span class="math inline">\(d(u)+d(v)\geq n\)</span>，那么<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图。</li>
-<li>(邦迪-闭包)定理：图<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图当且仅当它的闭包是<span class="math inline">\(H\)</span>图。
-<ul>
-<li>在<span class="math inline">\(n\)</span>阶单图中，若对<span class="math inline">\(d(u)+d(v)\geq n\)</span>的任意一对顶点<span class="math inline">\(u\)</span>与<span class="math inline">\(v\)</span>，均有<span class="math inline">\(u\ adj\ v\)</span>, 则称<span class="math inline">\(G\)</span>是闭图。</li>
-<li>称<span class="math inline">\(\bar{G}\)</span>是图<span class="math inline">\(G\)</span>的闭包，如果它是包含<span class="math inline">\(G\)</span>的极小闭图。
-<ul>
-<li>如果<span class="math inline">\(G\)</span>本身是闭图，则其闭包是它本身；如果<span class="math inline">\(G\)</span>不是闭图，则由定义可以通过在度和大于等于<span class="math inline">\(n\)</span>的不相邻顶点对间加边来构造<span class="math inline">\(G\)</span>的闭图。</li>
-</ul></li>
-<li>图<span class="math inline">\(G\)</span>的闭包是唯一的。</li>
-</ul></li>
-<li>度序列判定法：设<span class="math inline">\(G\)</span>是度序列为<span class="math inline">\((d_1,d_2,...,d_n)\)</span>的简单图，这里<span class="math inline">\(d_1\leq d_2\leq ...\leq d_n\)</span>，并且<span class="math inline">\(n\geq 3\)</span>。若对任何<span class="math inline">\(\displaystyle m&lt;\frac{n}{2}\)</span>，或有<span class="math inline">\(d_m&gt;m\)</span>，或有<span class="math inline">\(d_{n-m}\geq n-m\)</span>，则<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图</li>
-</ul>
-<h2 id="度极大非hamilton图">4.3 度极大非Hamilton图</h2>
-<ul>
-<li>图<span class="math inline">\(G\)</span>称为<strong>度极大非</strong><span class="math inline">\(H\)</span><strong>图</strong>，如果它的度不弱于其它非<span class="math inline">\(H\)</span>图</li>
-<li><span class="math inline">\(C_{m,n}\)</span>图：对于<span class="math inline">\(\displaystyle 1\leq m&lt;\frac{n}{2}\)</span>，<span class="math inline">\(C_{m,n}\)</span>图定义为<span class="math inline">\(C_{m,n}=K_m\vee （\bar{K}_m+K_{n-2m}）\)</span>
-<ul>
-<li>注意理解<span class="math inline">\(C_{m,n}\)</span>的度序列为： <span class="math display">\[(\underbrace{m,...,m,}_{m}\ \underbrace{n-m-1,...,n-m-1,}_{n-2m}\ \underbrace{n-1,...,n-1}_{m})\]</span></li>
-</ul></li>
-<li>对于<span class="math inline">\(\displaystyle 1\leq m&lt;\frac{n}{2}\)</span>，<span class="math inline">\(C_{m,n}\)</span>图是非<span class="math inline">\(H\)</span>图</li>
-</ul>
-<p>定理1</p>
-<ul>
-<li>若<span class="math inline">\(G\)</span>是<span class="math inline">\(n\geq 3\)</span>的非<span class="math inline">\(H\)</span>简单图，则<span class="math inline">\(G\)</span>度弱于某个<span class="math inline">\(C_{m,n}\)</span>图。（<strong>证明P85</strong>）
-<ul>
-<li>定理1刻画了非<span class="math inline">\(H\)</span>单图的特征：从度序列角度看，<span class="math inline">\(C_{m,n}\)</span>图族中某个图是某个<span class="math inline">\(n\)</span>阶非<span class="math inline">\(H\)</span>单图的极图</li>
-<li>定理1的条件是充分条件而非必要条件。例如当<span class="math inline">\(n=5\)</span>时，其度极大非<span class="math inline">\(H\)</span>图族是：<span class="math inline">\(C_{1,5}\)</span>与<span class="math inline">\(C_{2,5}\)</span>，5阶圈<span class="math inline">\(C_5\)</span>度弱于<span class="math inline">\(C_{2,5}\)</span>，但是<span class="math inline">\(C_5\)</span>是<span class="math inline">\(H\)</span>图</li>
-<li>如果<span class="math inline">\(n\)</span>阶单图<span class="math inline">\(G\)</span>度优于所有的<span class="math inline">\(C_{m,n}\)</span>图族，则<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图</li>
-</ul></li>
-</ul>
-<p>推论：</p>
-<ul>
-<li>设<span class="math inline">\(G\)</span>是<span class="math inline">\(n\)</span>阶单图。若<span class="math inline">\(n\geq 3\)</span>且<span class="math inline">\(\displaystyle |E(G)|&gt;\begin{pmatrix}  n-1 \\ 2\end{pmatrix}+1\)</span>，则<span class="math inline">\(G\)</span>是<span class="math inline">\(H\)</span>图。并且具有<span class="math inline">\(n\)</span>个顶点<span class="math inline">\(\begin{pmatrix}  n-1 \\ 2\end{pmatrix}+1\)</span>条边的非<span class="math inline">\(H\)</span>图只有<span class="math inline">\(C_{1,n}\)</span>以及<span class="math inline">\(C_{2,5}\)</span></li>
-<li><strong>证明P86</strong>，注：推论的条件是充分而非必要的</li>
-</ul>
+        <!-- # 主成分分析（PCA） -->
+<p><strong>主成分分析</strong>（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。</p>
+<p>首先从一张图来直观感受下：</p>
+<figure>
+<embed src="/public/images/PCA/PCA.webp"><figcaption>PCA</figcaption>
+</figure>
+<p>图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条直线上的投影就是降维后的数据。那么选择这条直线的标准是什么呢？标准就是样本点在直线上的投影要尽可能地分散，对应到数学形式上就是方差最大。下面进行数学推导。</p>
+<h2 id="数学推导">数学推导</h2>
+<p>样本<span class="math inline">\(X=[x_1, x_2,...,x_n]\)</span>，其中<span class="math inline">\(x_i \in R^p\)</span>，即每个样本是<span class="math inline">\(p\)</span>维的。现在我们进行降维操作，通过一个矩阵变换来实现： <span class="math display">\[y_i=Wx_i \qquad其中y_i\in R^q\]</span> 其中 <span class="math display">\[W=\left[\begin{matrix}
+        \omega ^T_1 \\
+        \vdots \\
+        \omega ^T_q
+    \end{matrix}\right] \in R^{q \times q}\]</span> 这样一来，相当于把<span class="math inline">\(x_i\)</span>的<span class="math inline">\(p\)</span>维数据降到<span class="math inline">\(y_i\)</span>的<span class="math inline">\(q\)</span>维（<span class="math inline">\(q&lt;p\)</span>），整个问题也变成了如何得到<span class="math inline">\(W\)</span>。</p>
+<p>如果将式子展开得到如下形式： <span class="math display">\[\begin{aligned}
+    Y &amp;= WX\\
+    &amp;= \left[
+        \begin{matrix}
+        \omega ^T_1 \\
+        \omega ^T_2 \\
+        \vdots \\
+        \omega ^T_q
+    \end{matrix}
+    \right] \times  
+    \begin{matrix}
+        [x_1 &amp; x_2 &amp; \cdots &amp; x_n]
+    \end{matrix} \\
+    &amp;= \left[\begin{matrix}
+            \omega ^T_1 x_1 &amp; \omega ^T_1 x_2 &amp; \cdots &amp; \omega ^T_1 x_n \\
+            \omega ^T_2 x_1 &amp; \omega ^T_2 x_2 &amp; \cdots &amp; \omega ^T_2 x_n \\
+            \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+            \omega ^T_q x_1 &amp; \omega ^T_q x_2 &amp; \cdots &amp; \omega ^T_q x_n
+        \end{matrix}\right] \\
+    &amp;=  \begin{matrix}
+        [y_1 &amp; y_2 &amp; \cdots &amp; y_n]
+        \end{matrix}
+\end{aligned}\]</span> 现在假设其中一个<span class="math inline">\(\omega _i\)</span>为<span class="math inline">\(\omega\)</span>，其中一个样本点<span class="math inline">\(x_i\)</span>为<span class="math inline">\(x\)</span>，注意<span class="math inline">\(\omega\)</span>和<span class="math inline">\(x\)</span>都是<span class="math inline">\(p\)</span>维的，那么: <span class="math display">\[ \omega ^T x = \omega \cdot x = |\omega||x|cos\theta \]</span> 其中可以对<span class="math inline">\(\omega\)</span>进行缩放，我们将约束其模为1，即<span class="math inline">\(|\omega|=1(\omega ^T \omega=1)\)</span>，于是： <span class="math display">\[ \omega ^T x = |x|cos\theta \]</span> 即问题转化为样本点<span class="math inline">\(x\)</span>在<span class="math inline">\(\omega\)</span>上的投影，现在要使得这些投影点的方差最大。下面介绍一些概念，然后进行推导。</p>
+<p>样本均值： <span class="math display">\[ \bar{x}=\frac{1}{n}\sum ^n_i x_i\]</span> 样本投影均值： <span class="math display">\[ \mu=\frac{1}{n}\sum ^n_i \omega ^Tx_i\]</span> 样本<span class="math inline">\(X\)</span>与样本<span class="math inline">\(Y\)</span>的协方差： <span class="math display">\[ \begin{aligned}
+    Cov(X,Y) &amp;= E[(X-E(X))(Y-E(Y))] \\
+    &amp;= \frac{1}{n}\sum ^n_i (x_i - \bar{x})(y_i - \bar{y})
+\end{aligned}\]</span> 样本点在<span class="math inline">\(\omega\)</span>上投影的方差： <span class="math display">\[ \begin{aligned}
+    \sigma ^2 &amp;= \frac{1}{n}\sum ^n_i (\omega^T x_i - \mu)^2\\
+    &amp;= \frac{1}{n}\sum ^n_i (\omega^T x_i - \frac{1}{n}\sum ^n_i \omega ^Tx_i)^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T x_i  - \omega^T(\frac{1}{n}\sum ^n_i x_i))^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T x_i  - \omega^T\bar{x})^2\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T(x_i  - \bar{x}))^2 \qquad这里\omega^T( x_i  - \bar{x})是一个数\\
+    &amp;= \frac{1}{n}\sum ^n_i(\omega^T(x_i  - \bar{x}))(\omega^T( x_i  - \bar{x}))^T\\
+    &amp;= \frac{1}{n}\sum ^n_i\omega^T(x_i  - \bar{x})(x_i  - \bar{x})^T\omega\\
+    &amp;= \omega^T(\frac{1}{n}\sum ^n_i (x_i  - \bar{x})(x_i  - \bar{x})^T)\omega\\
+    &amp;= \omega^T\Sigma\omega
+\end{aligned}\]</span> 其中<span class="math inline">\(\Sigma\)</span>是样本<span class="math inline">\(X\)</span>与自身的协方差矩阵。这样一来问题就变成以下优化问题： <span class="math display">\[ max\quad \omega^T\Sigma\omega \\
+s.t.\quad \omega^T\omega=1 \]</span> 用拉格朗日乘数法求解： <span class="math display">\[ L(\omega,\lambda)=\omega^T\Sigma\omega-\lambda(\omega^T\omega-1)\\
+\frac{\partial L(\omega,\lambda)}{\partial \omega}=2\Sigma\omega-2\lambda\omega=0\\
+\Sigma\omega=\lambda\omega \]</span> 即<span class="math inline">\(\lambda\)</span>是<span class="math inline">\(\Sigma\)</span>的特征值，<span class="math inline">\(\omega\)</span>是特征值为<span class="math inline">\(\lambda\)</span>的特征向量。由此可以推出： <span class="math display">\[ \sigma^2=\lambda\omega^T\omega=\lambda \]</span> 即<strong>投影后的方差就是协方差矩阵的特征值</strong>，使投影后的方差最大就是协方差矩阵的特征值最大。求解协方差矩阵<span class="math inline">\(\Sigma\)</span>的特征值和特征向量时可以用到<strong>谱分解</strong>（又称特征分解）： <span class="math display">\[ \Sigma=Q\Lambda Q^T \]</span> 其中<span class="math inline">\(Q\)</span>为正交矩阵，<span class="math inline">\(\Lambda\)</span>为对角矩阵，对角线上的元素为矩阵<span class="math inline">\(\Sigma\)</span>的特征值。<span class="math inline">\(Q\)</span>的列向量<span class="math inline">\(q_i\)</span>为<span class="math inline">\(\Lambda\)</span>中对角元素<span class="math inline">\(\lambda_{ii}\)</span>对应的特征向量。</p>
+<h2 id="pca算法步骤如下">PCA算法步骤如下</h2>
+<p>输入数据集<span class="math inline">\(X=[x_1, x_2,...,x_n]其中x_i\in R^n\)</span>，需要降到<span class="math inline">\(k\)</span>维，</p>
+<ol type="1">
+<li>去平均值(又称去中心化)，即<span class="math inline">\(x_i-\bar{x}\)</span>，得到<span class="math inline">\(\bar{X}=[x_1-\bar{x},x_2-\bar{x},...,x_n-\bar{x}]\)</span></li>
+<li>求解协方差矩阵<span class="math inline">\(\displaystyle \Sigma=\frac{1}{n}\bar{X}\bar{X}^T\)</span>的特征值及对应的特征向量</li>
+<li>选取前<span class="math inline">\(k\)</span>大的特征值<span class="math inline">\((\lambda_1,\lambda_2,...,\lambda_k)\)</span>及对应的特征向量<span class="math inline">\((\omega_1,\omega_2,...,\omega_k)\)</span></li>
+<li>降维后的数据 <span class="math display">\[Y=WX,W=\left[\begin{matrix}
+     \omega ^T_1 \\
+     \vdots \\
+     \omega ^T_k
+ \end{matrix}\right]\]</span></li>
+</ol>
+<h2 id="代码如下">代码如下</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官网 https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html</span></span><br><span class="line"><span class="comment"># 输入数据为(n_samples, n_features)</span></span><br><span class="line">X = np.array([[<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">-2</span>, <span class="number">-1</span>], [<span class="number">-3</span>, <span class="number">-2</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">1</span>], [<span class="number">3</span>, <span class="number">2</span>]])</span><br><span class="line">pca = PCA(n_components=<span class="number">1</span>)</span><br><span class="line">pca.fit(X)</span><br><span class="line"></span><br><span class="line">print(pca.explained_variance_ratio_) <span class="comment"># 所保留的特征的方差百分比</span></span><br><span class="line">print(pca.fit_transform(X)) <span class="comment"># 返回降维后的数据(n_samples, n_components)</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -611,7 +616,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/" title="第四章 Euler图与Hamilton图">https://uestc-lxn.github.io/2019/05/25/graph-theory-ch4/</a>
+    <a href="https://uestc-lxn.github.io/2019/11/01/pca/" title="主成分分析（PCA）">https://uestc-lxn.github.io/2019/11/01/pca/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -624,7 +629,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
         </div>
       
@@ -637,8 +642,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/25/graph-theory-ch3/" rel="next" title="第三章 图的连通度">
-                <i class="fa fa-chevron-left"></i> 第三章 图的连通度
+              <a href="/2019/05/25/graph-theory-index/" rel="next" title="图论重点概念整理">
+                <i class="fa fa-chevron-left"></i> 图论重点概念整理
               </a>
             
           </div>
@@ -646,10 +651,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/25/graph-theory-ch5/" rel="prev" title="第五章 匹配与因子分解">
-                第五章 匹配与因子分解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -830,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章-euler图与hamilton图"><span class="nav-text">第四章 Euler图与Hamilton图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#euler图"><span class="nav-text">4.1 Euler图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hamilton图"><span class="nav-text">4.2 Hamilton图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#度极大非hamilton图"><span class="nav-text">4.3 度极大非Hamilton图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学推导"><span class="nav-text">数学推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pca算法步骤如下"><span class="nav-text">PCA算法步骤如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码如下"><span class="nav-text">代码如下</span></a></li></ol></div>
             
 
           </div>

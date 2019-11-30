@@ -96,15 +96,15 @@
 
 
 
-  <meta name="description" content="第一章 图的基本概念 1.1 概念  平凡图：只有一个顶点并且没有边 简单图：既没有环也没有重边的图 \(n\)阶图：顶点数为\(n\)的图 顶点\(u\)与\(v\)相邻接\((adj)\)：顶点\(u\)与\(v\)有边相连接；其中\(u\)与\(v\)称为该边的两个端点。 顶点\(u\)与边\(e\)相关联：顶点\(u\)是边\(e\)的端点 边\(e_1\)与边\(e_2\">
-<meta name="keywords" content="图论">
+  <meta name="description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\] 其中 \[\Omega (f)=\ga">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一章 图的基本概念">
-<meta property="og:url" content="https:&#x2F;&#x2F;uestc-lxn.github.io&#x2F;2019&#x2F;05&#x2F;25&#x2F;graph-theory-ch1&#x2F;index.html">
+<meta property="og:title" content="XGboost原理">
+<meta property="og:url" content="https:&#x2F;&#x2F;uestc-lxn.github.io&#x2F;2019&#x2F;11&#x2F;30&#x2F;XGboost&#x2F;index.html">
 <meta property="og:site_name" content="刘笑男">
-<meta property="og:description" content="第一章 图的基本概念 1.1 概念  平凡图：只有一个顶点并且没有边 简单图：既没有环也没有重边的图 \(n\)阶图：顶点数为\(n\)的图 顶点\(u\)与\(v\)相邻接\((adj)\)：顶点\(u\)与\(v\)有边相连接；其中\(u\)与\(v\)称为该边的两个端点。 顶点\(u\)与边\(e\)相关联：顶点\(u\)是边\(e\)的端点 边\(e_1\)与边\(e_2\">
+<meta property="og:description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\] 其中 \[\Omega (f)=\ga">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T06:42:14.087Z">
+<meta property="og:updated_time" content="2019-11-30T03:20:03.252Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch1/"/>
+  <link rel="canonical" href="https://uestc-lxn.github.io/2019/11/30/XGboost/"/>
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>第一章 图的基本概念 | 刘笑男</title>
+  <title>XGboost原理 | 刘笑男</title>
   
 
 
@@ -353,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch1/"/>
+    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/11/30/XGboost/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="UESTC-lxn"/>
@@ -370,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第一章 图的基本概念
+          <h1 class="post-title" itemprop="name headline">XGboost原理
 
               
             
@@ -396,24 +396,12 @@
                 
               
 
-              <time title="创建时间：2019-05-25 11:00:42" itemprop="dateCreated datePublished" datetime="2019-05-25T11:00:42+08:00">2019-05-25</time>
+              <time title="创建时间：2019-11-30 10:00:00 / 修改时间：11:20:03" itemprop="dateCreated datePublished" datetime="2019-11-30T10:00:00+08:00">2019-11-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-27 14:42:14" itemprop="dateModified" datetime="2019-10-27T14:42:14+08:00">2019-10-27</time>
               
             
           </span>
@@ -430,7 +418,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -449,8 +437,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/25/graph-theory-ch1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/25/graph-theory-ch1/" itemprop="commentCount"></span>
+                <a href="/2019/11/30/XGboost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/30/XGboost/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -458,7 +446,7 @@
 
           
           
-            <span id="/2019/05/25/graph-theory-ch1/" class="leancloud_visitors" data-flag-title="第一章 图的基本概念">
+            <span id="/2019/11/30/XGboost/" class="leancloud_visitors" data-flag-title="XGboost原理">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -489,72 +477,17 @@
       
 
       
-        <h1 id="第一章-图的基本概念">第一章 图的基本概念</h1>
-<h2 id="概念">1.1 概念</h2>
-<ul>
-<li>平凡图：只有一个顶点并且没有边</li>
-<li>简单图：既没有环也没有重边的图</li>
-<li><span class="math inline">\(n\)</span>阶图：顶点数为<span class="math inline">\(n\)</span>的图</li>
-<li>顶点<span class="math inline">\(u\)</span>与<span class="math inline">\(v\)</span>相<strong>邻接<span class="math inline">\((adj)\)</span></strong>：顶点<span class="math inline">\(u\)</span>与<span class="math inline">\(v\)</span>有边相连接；其中<span class="math inline">\(u\)</span>与<span class="math inline">\(v\)</span>称为该边的两个端点。</li>
-<li>顶点<span class="math inline">\(u\)</span>与边<span class="math inline">\(e\)</span>相<strong>关联</strong>：顶点<span class="math inline">\(u\)</span>是边<span class="math inline">\(e\)</span>的端点</li>
-<li>边<span class="math inline">\(e_1\)</span>与边<span class="math inline">\(e_2\)</span>相<strong>邻接</strong>：边<span class="math inline">\(e_1\)</span>与边<span class="math inline">\(e_2\)</span>有公共端点 <a id="more"></a></li>
-<li>完全图：每两个不同的顶点之间都有一条边相连的简单图，记为<span class="math inline">\(K_n\)</span></li>
-<li>完全偶图：具有二分类<span class="math inline">\((X,Y)\)</span>的简单偶图，其中<span class="math inline">\(X\)</span>的每个顶点于<span class="math inline">\(Y\)</span>的每个顶点相连。若<span class="math inline">\(|X|=m, |Y|=n,\)</span>则这样的完全偶图记为<span class="math inline">\(K_{m,n}\)</span>
-<ul>
-<li>一个图是偶图当且仅当它不包含奇圈。</li>
-</ul></li>
-<li><span class="math inline">\(G\)</span>的顶点<span class="math inline">\(v\)</span>的度<span class="math inline">\(d(v)\)</span>是指<span class="math inline">\(G\)</span>中与<span class="math inline">\(v\)</span>关联的边的数目，每个环计算两次。<span class="math inline">\(\delta(G)\)</span>为<strong>最小度</strong>，<span class="math inline">\(\Delta(G)\)</span>为<strong>最大度</strong>。
-<ul>
-<li><span class="math inline">\(\displaystyle \sum^{}_{v \in V}{d(v)=2m}\)</span> <strong>（握手定理）</strong></li>
-<li>在任何图中，奇度顶点个数为偶数</li>
-<li>正则图的阶数和度数不同时为奇数</li>
-<li>简单图<span class="math inline">\(G\)</span>：<span class="math inline">\(\displaystyle \delta \leq \frac{2m}{n}\leq \Delta\)</span></li>
-</ul></li>
-<li>简单图中每个顶点的度数都为<span class="math inline">\(k\)</span>，则称<span class="math inline">\(k\)</span><strong>正则图</strong></li>
-<li>度序列：图<span class="math inline">\(G\)</span>的各个点的度<span class="math inline">\(d_1,d_2,...,d_n\)</span>构成的非负整数组<span class="math inline">\((d_1,d_2,...,d_n)\)</span>称为图<span class="math inline">\(G\)</span>的<strong>度序列</strong>
-<ul>
-<li>非负整数组<span class="math inline">\((d_1,d_2,...,d_n)\)</span>是图的度序列的充分必要条件为<span class="math inline">\(\displaystyle \sum^{}_{}{d_i}\)</span>为偶数</li>
-</ul></li>
-<li>图序列：一个非负数组如果是某<strong>简单图</strong>的度序列，则称<strong>图序列</strong>
-<ul>
-<li>非负整数组<span class="math inline">\(\displaystyle \pi =(d_1,d_2,...,d_n),d_1\geq d_2\geq ...\geq d_n,\sum^{n}_{i=1}d_i=2m\)</span>是图序列的充分必要条件为 <span class="math display">\[\pi _1=(\underbrace{d_2-1,d_3-1,...,d_{d_1+1}-1}_{d_1\small个-1\small项},d_{d_1+2},...,d_n)\small 是图序列\]</span><br>
-</li>
-</ul></li>
-<li>自补图：若<span class="math inline">\(n\)</span>阶图<span class="math inline">\(G\)</span>是自补的，则<span class="math inline">\(n=0,1(mod\ 4)\)</span></li>
-<li>生成子图：如果图<span class="math inline">\(G\)</span>的一个子图包含<span class="math inline">\(G\)</span>的所有顶点，称该子图为<span class="math inline">\(G\)</span>的一个<strong>生成子图</strong>。<em>(生成子图不需要连通，生成树是连通的)</em></li>
-</ul>
-<h2 id="图运算">1.2 图运算</h2>
-<ul>
-<li>对称差：<span class="math inline">\(G_1 \Delta G_2=(G_1 \cup G_2)-(G_1 \cap G_2)\)</span> 注：求<span class="math inline">\(M\)</span>可扩路用到</li>
-<li>联图：在不相交的<span class="math inline">\(G_1\)</span>和<span class="math inline">\(G_2\)</span>的并图<span class="math inline">\(G_1+G_2\)</span>中，把<span class="math inline">\(G_1\)</span>的每个顶点和<span class="math inline">\(G_2\)</span>的每个顶点连接起来所得到的图称为<span class="math inline">\(G_1\)</span>和<span class="math inline">\(G_2\)</span>的联图，记为<span class="math inline">\(G_1\)</span> V <span class="math inline">\(G_2\)</span>。
-<ul>
-<li>联图的顶点数<span class="math inline">\(n_1+n_2\)</span>，边数<span class="math inline">\(n_1n_2+m_1+m_2\)</span></li>
-</ul></li>
-<li>积图：设<span class="math inline">\(G_1=(V_1,E_1),G_2=(V_2,E_2)\)</span>是两个图，对点集<span class="math inline">\(V=V_1 \times V_2\)</span>的任意两个点<span class="math inline">\(u=(u_1,u_2),v=(v_1,v_2)\)</span>，当<span class="math inline">\((u_1=v_1 且 u_2\ adj\ v_2)\)</span>或<span class="math inline">\((u_2=v_2 且 u_1\ adj\ v_1)\)</span>时，把<span class="math inline">\(u\)</span>和<span class="math inline">\(v\)</span>相连，得到的新图记为<span class="math inline">\(G=G_1 \times G_2\)</span>。
-<ul>
-<li>积图的顶点数<span class="math inline">\(n_1n_2\)</span>，边数<span class="math inline">\(n_1m_2+n_2m_1\)</span></li>
-</ul></li>
-</ul>
-<h2 id="最短路">1.3 最短路</h2>
-<ul>
-<li>迹：<strong>边不重复</strong>的途径称为图的一条迹</li>
-<li>路：<strong>顶点不重复</strong>的途径称为图的一条路</li>
-<li>Dijkstra算法</li>
-</ul>
-<h2 id="极图">1.4 极图</h2>
-<ul>
-<li><span class="math inline">\(l\)</span>部图：若简单图<span class="math inline">\(G\)</span>的点集<span class="math inline">\(V\)</span>有一个划分 <span class="math display">\[V=\bigcup^{l}_{i=1}{V_i},V_i \cap V_j=\varnothing,i \neq j\]</span> 且所有<span class="math inline">\(V_i\)</span>非空，<span class="math inline">\(V_i\)</span>内的点均不连通，则称<span class="math inline">\(G\)</span>是一个<span class="math inline">\(l\)</span>部图</li>
-<li>完全<span class="math inline">\(l\)</span>部图：如果在一个<span class="math inline">\(l\)</span>部图<span class="math inline">\(G\)</span>中，任意部<span class="math inline">\(V_i\)</span>中的每个顶点同<span class="math inline">\(G\)</span>中其他各部中的每个顶点均邻接，称<span class="math inline">\(G\)</span>为完全<span class="math inline">\(l\)</span>部图，记作<span class="math inline">\(G=K_{n_1,n_2,...,n_l},(n_i=|V_i|,1 \leq i \leq l)\)</span></li>
-<li>完全<span class="math inline">\(l\)</span>几乎等部图：如果在一个<span class="math inline">\(n\)</span>个点的完全<span class="math inline">\(l\)</span>部图<span class="math inline">\(G\)</span>中有 <span class="math display">\[n=kl+r,0 \leq r &lt; l\]</span> <span class="math display">\[|V_1|=|V_2|=...=|V_r|=k+1\]</span> <span class="math display">\[|V_{r+1}|=|V_{r+2}|=...=|V_{l}|=k\]</span> 则称<span class="math inline">\(G\)</span>为<span class="math inline">\(n\)</span>阶完全<span class="math inline">\(l\)</span>几乎等部图，记为<span class="math inline">\(T_{l,n}\)</span></li>
-<li>完全<span class="math inline">\(l\)</span>等部图：<span class="math inline">\(|V_1|=|V_2|=...=|V_l|\)</span>的完全<span class="math inline">\(l\)</span>几乎等部图称为完全<span class="math inline">\(l\)</span>等部图</li>
-<li><strong>托兰定理</strong>
-<ul>
-<li>设<span class="math inline">\(G\)</span>和<span class="math inline">\(H\)</span>是两个<span class="math inline">\(n\)</span>阶图，称<span class="math inline">\(G\)</span><strong>度弱于</strong><span class="math inline">\(H\)</span>，如果存在双射<span class="math inline">\(\mu\)</span>:<span class="math inline">\(V(G)\rightarrow V(H)\)</span>，使得<span class="math inline">\(\forall v\in V(G)\)</span>有<span class="math inline">\(d_G(v)\leq d_H(\mu (v))\)</span></li>
-<li>若<span class="math inline">\(n\)</span>阶简单图<span class="math inline">\(G\)</span>不包含<span class="math inline">\(K_{l+1}\)</span>，则<span class="math inline">\(G\)</span>度弱于某个完全<span class="math inline">\(l\)</span>部图<span class="math inline">\(H\)</span>，且若<span class="math inline">\(G\)</span>具有与<span class="math inline">\(H\)</span>相同的度序列，则<span class="math inline">\(G\cong H\)</span></li>
-<li>(<span class="math inline">\(Tur\acute{a}n\)</span>)若<span class="math inline">\(G\)</span>是简单图，并且不包含<span class="math inline">\(K_{l+1}\)</span>，则<span class="math inline">\(m(G)\leq m(T_{l,n})\)</span>，仅当<span class="math inline">\(G\cong T_{l,n}\)</span>时，有<span class="math inline">\(m(g)=m(T_{l,n})\)</span></li>
-<li>应用：工兵排雷</li>
-</ul></li>
-</ul>
+        <p>XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。</p>
+<h2 id="xgboost原理推导">XGboost原理推导</h2>
+<p>首先我们来看XGboost的目标函数： <span class="math display">\[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\]</span> 其中 <span class="math display">\[\Omega (f)=\gamma T+\frac{1}{2} \lambda \parallel \omega \parallel ^2\]</span> 这里一个个解释，目标函数中的第二项<span class="math inline">\(\displaystyle \sum_k \Omega(f_k)\)</span>，这是正则项，也称惩罚项，它是控制模型的复杂度，也就是说这一项的目的是为了在模型复杂程度和模型效果之间取一个平衡。<span class="math inline">\(f_k\)</span>是基分类器，是来自于Boosting思想中的加法模型，即 <span class="math display">\[\hat y_i =\sum_k f_k(x_i)\]</span> 在<span class="math inline">\(\Omega (f)\)</span>的表达式中，<span class="math inline">\(T\)</span>表示树中的叶子节点数，<span class="math inline">\(\omega\)</span>是叶子节点上的值</p>
+<p>(未完待续)</p>
+<h2 id="参考文献">参考文献</h2>
+<ol type="1">
+<li>XGBoost A Scalable Tree Boosting System</li>
+<li><a href="https://zhuanlan.zhihu.com/p/91817667" target="_blank" rel="noopener">深入理解网红算法XGBoost</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/75217528" target="_blank" rel="noopener">对xgboost的理解</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29765582" target="_blank" rel="noopener">一文理解GBDT的原理</a></li>
+</ol>
 
       
     </div>
@@ -613,7 +546,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://uestc-lxn.github.io/2019/05/25/graph-theory-ch1/" title="第一章 图的基本概念">https://uestc-lxn.github.io/2019/05/25/graph-theory-ch1/</a>
+    <a href="https://uestc-lxn.github.io/2019/11/30/XGboost/" title="XGboost原理">https://uestc-lxn.github.io/2019/11/30/XGboost/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -626,7 +559,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
         </div>
       
@@ -639,15 +572,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/01/pca/" rel="next" title="主成分分析（PCA）">
+                <i class="fa fa-chevron-left"></i> 主成分分析（PCA）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/25/graph-theory-ch2/" rel="prev" title="第二章 树">
-                第二章 树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -830,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-图的基本概念"><span class="nav-text">第一章 图的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图运算"><span class="nav-text">1.2 图运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路"><span class="nav-text">1.3 最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极图"><span class="nav-text">1.4 极图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xgboost原理推导"><span class="nav-text">XGboost原理推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>

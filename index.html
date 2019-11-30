@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">10</span></a>
 
   </li>
 
@@ -555,6 +555,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/11/30/XGboost/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="UESTC-lxn"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘笑男"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/11/30/XGboost/" class="post-title-link" itemprop="url">XGboost原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-30 10:00:00 / 修改时间：11:20:03" itemprop="dateCreated datePublished" datetime="2019-11-30T10:00:00+08:00">2019-11-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/11/30/XGboost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/30/XGboost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/11/30/XGboost/" class="leancloud_visitors" data-flag-title="XGboost原理">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。</p>
+<h2 id="xgboost原理推导">XGboost原理推导</h2>
+<p>首先我们来看XGboost的目标函数： <span class="math display">\[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\]</span> 其中 <span class="math display">\[\Omega (f)=\gamma T+\frac{1}{2} \lambda \parallel \omega \parallel ^2\]</span> 这里一个个解释，目标函数中的第二项<span class="math inline">\(\displaystyle \sum_k \Omega(f_k)\)</span>，这是正则项，也称惩罚项，它是控制模型的复杂度，也就是说这一项的目的是为了在模型复杂程度和模型效果之间取一个平衡。<span class="math inline">\(f_k\)</span>是基分类器，是来自于Boosting思想中的加法模型，即 <span class="math display">\[\hat y_i =\sum_k f_k(x_i)\]</span> 在<span class="math inline">\(\Omega (f)\)</span>的表达式中，<span class="math inline">\(T\)</span>表示树中的叶子节点数，<span class="math inline">\(\omega\)</span>是叶子节点上的值</p>
+<p>(未完待续)</p>
+<h2 id="参考文献">参考文献</h2>
+<ol type="1">
+<li>XGBoost A Scalable Tree Boosting System</li>
+<li><a href="https://zhuanlan.zhihu.com/p/91817667" target="_blank" rel="noopener">深入理解网红算法XGBoost</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/75217528" target="_blank" rel="noopener">对xgboost的理解</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29765582" target="_blank" rel="noopener">一文理解GBDT的原理</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://uestc-lxn.github.io/2019/11/01/pca/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -699,7 +894,7 @@
 <p><strong>主成分分析</strong>（Principal Component Analysis，PCA）是一种常见的数据降维方法，其目的是在“信息”损失较小的前提下，将高维的数据转换到低维，从而减小计算量。</p>
 <p>首先从一张图来直观感受下：</p>
 <figure>
-<embed src="https://UESTC-lxn.github.io/2019/11/01/pca/pca.webp"><figcaption>pca</figcaption>
+<img src="https://UESTC-lxn.github.io/2019/11/01/pca/pca.webp" alt><figcaption>pca</figcaption>
 </figure>
 <p>图中蓝色的点为样本点，每个样本点有二维特征，图中展示的就是将二维特征降成一维特征。图中中心的小白点是所有样本点的中心，过这个中心点为可以画出无数条直线，样本点在这条直线上的投影就是降维后的数据。那么选择这条直线的标准是什么呢？标准就是样本点在直线上的投影要尽可能地分散，对应到数学形式上就是方差最大。下面进行数学推导。</p>
 <h2 id="数学推导">数学推导</h2>
@@ -2535,7 +2730,7 @@ s.t.\quad \omega^T\omega=1 \]</span> 用拉格朗日乘数法求解： <span cla
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2917,6 +3112,8 @@ s.t.\quad \omega^T\omega=1 \]</span> 用拉格朗日乘数法求解： <span cla
     
       
     
+      
+    
   
 
   
@@ -2984,5 +3181,5 @@ s.t.\quad \omega^T\omega=1 \]</span> 用拉格朗日乘数法求解： <span cla
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600,"hOffset":-50,"vOffset":-50},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

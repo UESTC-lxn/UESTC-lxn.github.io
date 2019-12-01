@@ -96,15 +96,15 @@
 
 
 
-  <meta name="description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\] 其中 \[\Omega (f)=\ga">
+  <meta name="description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k) \qquad (1-1)\] 其中 \">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XGboost原理">
 <meta property="og:url" content="https:&#x2F;&#x2F;uestc-lxn.github.io&#x2F;2019&#x2F;11&#x2F;30&#x2F;XGboost&#x2F;index.html">
 <meta property="og:site_name" content="刘笑男">
-<meta property="og:description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\] 其中 \[\Omega (f)=\ga">
+<meta property="og:description" content="XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。 XGboost原理推导 首先我们来看XGboost的目标函数： \[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k) \qquad (1-1)\] 其中 \">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T03:20:03.252Z">
+<meta property="og:updated_time" content="2019-12-01T08:37:21.461Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -396,12 +396,24 @@
                 
               
 
-              <time title="创建时间：2019-11-30 10:00:00 / 修改时间：11:20:03" itemprop="dateCreated datePublished" datetime="2019-11-30T10:00:00+08:00">2019-11-30</time>
+              <time title="创建时间：2019-11-30 10:00:00" itemprop="dateCreated datePublished" datetime="2019-11-30T10:00:00+08:00">2019-11-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-01 16:37:21" itemprop="dateModified" datetime="2019-12-01T16:37:21+08:00">2019-12-01</time>
               
             
           </span>
@@ -479,11 +491,29 @@
       
         <p>XGboost是一种梯度提升决策树（GBDT）的模型，它的思想是由决策树（CART）到Adaboost，再到GBDT发展起来的，下面开始总结一下学习XGboost原理的一些心得体会。</p>
 <h2 id="xgboost原理推导">XGboost原理推导</h2>
-<p>首先我们来看XGboost的目标函数： <span class="math display">\[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k)\]</span> 其中 <span class="math display">\[\Omega (f)=\gamma T+\frac{1}{2} \lambda \parallel \omega \parallel ^2\]</span> 这里一个个解释，目标函数中的第二项<span class="math inline">\(\displaystyle \sum_k \Omega(f_k)\)</span>，这是正则项，也称惩罚项，它是控制模型的复杂度，也就是说这一项的目的是为了在模型复杂程度和模型效果之间取一个平衡。<span class="math inline">\(f_k\)</span>是基分类器，是来自于Boosting思想中的加法模型，即 <span class="math display">\[\hat y_i =\sum_k f_k(x_i)\]</span> 在<span class="math inline">\(\Omega (f)\)</span>的表达式中，<span class="math inline">\(T\)</span>表示树中的叶子节点数，<span class="math inline">\(\omega\)</span>是叶子节点上的值</p>
+<p>首先我们来看XGboost的目标函数： <span class="math display">\[L(\phi)=\sum_i l(\hat y_i ,y_i)+\sum_k \Omega(f_k) \qquad (1-1)\]</span></p>
+<p>其中</p>
+<p><span class="math display">\[\Omega (f)=\gamma T+\frac{1}{2} \lambda \parallel \omega \parallel ^2\]</span></p>
+<p>这里一个个解释，目标函数中的第二项<span class="math inline">\(\displaystyle \sum_k \Omega(f_k)\)</span>，这是正则项，也称惩罚项，它是控制模型的复杂度，也就是说这一项的目的是为了在模型复杂程度和模型效果之间取一个平衡。<span class="math inline">\(f_k\)</span>是基分类器（XGboost中的基分类器是CART），是来自于Boosting思想中的加法模型，即 <span class="math display">\[\hat y_i =\sum_k f_k(x_i)\]</span></p>
+<p>在<span class="math inline">\(\Omega (f)\)</span>的表达式中，<span class="math inline">\(T\)</span>表示树中的叶子节点数，<span class="math inline">\(\omega\)</span>是叶子节点上的值。目标函数中的第一项是损失函数（Lost function），<span class="math inline">\(\hat y_i\)</span>是预测值，<span class="math inline">\(y_i\)</span>是真实值，<span class="math inline">\(i\)</span>是样本数。</p>
+<p>根据这个目标函数，我们要求的就是<span class="math inline">\(f_k\)</span>，即当前状态下的决策树是什么样子的。求解的方法是向前分步算法： <span class="math display">\[L^{(t)}=\sum_i l(y_i,\hat y^{(t-1)}_i + f_t(x_i))+\Omega (f_t) \qquad (1-2)\]</span></p>
+<p>也就是说，在当前状态第<span class="math inline">\(t\)</span>轮，那么的<span class="math inline">\(t-1\)</span>轮的结果就是已知的，所以优化上面的式子就能得到<span class="math inline">\(f_t\)</span>。其实这个式子还有一个常数项<span class="math inline">\(\displaystyle \sum_{k=1}^{t-1}\Omega(f_k)\)</span>，即前<span class="math inline">\(t-1\)</span>轮的正则项，由于常数项对于优化结果是没有影响的，所以去掉了。求解式（1-2），这里用到二阶泰勒展开，先回顾一下二阶泰勒展开： &gt; <span class="math inline">\(\displaystyle f(x)=f(x_0)+f&#39;(x_0)(x-x_0)+\frac{1}{2}f&#39;&#39;(x_0)(x-x_0)^2\)</span></p>
+<p>换一种写法可能对这个问题更直观一点： &gt; <span class="math inline">\(\displaystyle f(x_0+\Delta x)=f(x_0)+f&#39;(x_0)\Delta x+\frac{1}{2}f&#39;&#39;(x_0)(\Delta x)^2\)</span></p>
+<p>下面我们将式（1-2）中的损失函数二阶展开，把<span class="math inline">\(\hat y^{(t-1)}_i\)</span>看作是泰勒公式中的<span class="math inline">\(x_0\)</span>，<span class="math inline">\(f_t(x_i)\)</span>看作是<span class="math inline">\(\Delta x\)</span>，展开得到下式： <span class="math display">\[L^{(t)}\simeq \sum_i[l(y_i,\hat y^{(t-1)}_i)+g_i f_t(x_i)+\frac{1}{2}h_i f^2_t(x_i)]+\Omega (f_t) \qquad (1-3)\]</span></p>
+<p>其中</p>
+<p><span class="math display">\[g_i=\partial _{\hat y^{(t-1)}} l(y_i,\hat y^{(t-1)}) \qquad h_i=\partial ^2_{\hat y^{(t-1)}} l(y_i,\hat y^{(t-1)})\]</span> 即<span class="math inline">\(g_i\)</span>，<span class="math inline">\(h_i\)</span>分别是损失函数<span class="math inline">\(l(y_i,\hat y^{(t-1)})\)</span>对<span class="math inline">\(\hat y^{(t-1)}\)</span>的一阶导数和二阶导数。</p>
+<p>由于式（1-3）中的<span class="math inline">\(l(y_i,\hat y^{(t-1)})\)</span>为已知项，即为常数项，所以去除后可以得到下式： <span class="math display">\[L^{(t)}\simeq \sum_i[g_i f_t(x_i)+\frac{1}{2}h_i f^2_t(x_i)]+\Omega (f_t) \qquad (1-4)\]</span></p>
+<p>接下来将式（1-4）中的正则项<span class="math inline">\(\Omega (f_t)\)</span>的具体内容代入式子中，得到下式： <span class="math display">\[L^{(t)}\simeq \sum_i[g_i f_t(x_i)+\frac{1}{2}h_i f^2_t(x_i)]+\gamma T+\frac{1}{2}\lambda \sum^T_{j=1} \omega^2_j \qquad (1-5)\]</span></p>
+<p>式中的<span class="math inline">\(\omega _j\)</span>是叶子节点<span class="math inline">\(j\)</span>上的值。接下来需要做一个求和下标的转换，式（1-5）中的求和是对所有的样本点求和，那么我们可以这样想，因为每一个样本点最终都会落到一个叶子节点上，所以对于每一个叶子节点，至少有一个样本点。这样一来，<strong>对所有的样本点求和就可以转换成对所有的叶子节点求和</strong>，可以得到下式： <span class="math display">\[L^{(t)}\simeq \sum^T_{j=1}[ (\sum _{i\in I_j} g_i)\omega _j +\frac{1}{2}(\sum _{i\in I_j} h_i+\lambda)\omega ^2_j]+\gamma T \qquad (1-6)\]</span></p>
+<p>式（1-6）中的<span class="math inline">\(I_j\)</span>是一个集合，表示所有落到叶子节点<span class="math inline">\(j\)</span>的样本点。对于某棵决策树结构，式（1-6）的未知量就只有<span class="math inline">\(\omega _j\)</span>，并且整个式子（1-6）是关于<span class="math inline">\(\omega _j\)</span>的一元二次方程，求最值时，令<span class="math inline">\(\displaystyle \frac{\partial {L^{(t)}}}{\partial \omega _j}=0\)</span>即可求得<span class="math inline">\(\omega ^*_j\)</span>： <span class="math display">\[\omega ^*_j =-\frac{\sum _{i\in I_j} g_i}{\sum _{i\in I_j} h_i+\lambda}\]</span></p>
+<p>将<span class="math inline">\(\omega ^*_j\)</span>的值代入式（1-6）得到下式： <span class="math display">\[L^{(t)} (q)=-\frac{1}{2} \sum ^T_{j=1} \frac{(\sum _{i\in I_j} g_i)^2}{\sum _{i\in I_j} h_i+\lambda}+\gamma T\]</span></p>
+<p>这里便得到了评价树结构好坏的score function，根据这个score function就可以得到划分节点的依据，即某节点分开后的score function减去这个节点未分开的score function： <span class="math display">\[L_{split}=\frac{1}{2} [\frac{(\sum _{i\in I_L} g_i)^2}{\sum _{i\in I_L} h_i+\lambda}+\frac{(\sum _{i\in I_R} g_i)^2}{\sum _{i\in I_R} h_i+\lambda}-\frac{(\sum _{i\in I} g_i)^2}{\sum _{i\in I} h_i+\lambda}]-\gamma\]</span></p>
+<p>式子中的<span class="math inline">\(I_L,I_R\)</span>分别表示某节点分裂后落到左边节点的所有样本点和落到右边节点的所有样本点。</p>
 <p>(未完待续)</p>
 <h2 id="参考文献">参考文献</h2>
 <ol type="1">
-<li>XGBoost A Scalable Tree Boosting System</li>
+<li>Chen, Tianqi, and Carlos Guestrin. "Xgboost: A scalable tree boosting system." Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining. ACM, 2016.</li>
+<li>《统计学习方法》 李航 著</li>
 <li><a href="https://zhuanlan.zhihu.com/p/91817667" target="_blank" rel="noopener">深入理解网红算法XGBoost</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/75217528" target="_blank" rel="noopener">对xgboost的理解</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/29765582" target="_blank" rel="noopener">一文理解GBDT的原理</a></li>
